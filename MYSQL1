@@ -2,7 +2,7 @@ use mall;
 create table Customer(
 	customer_id int,
 	cust_name nvarchar(40),
-  city nvarchar(40),
+        city nvarchar(40),
 	grade int,
 	salesman_id int);
 
