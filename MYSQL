@@ -1,0 +1,29 @@
+GYAZO: https://gyazo.com/04d20cec522f56eb34acc1e6cc54ca6f
+
+
+Write a query statement to display all customers in New York who have a grade value above 100: 
+select * from customer
+where (city = 'new York' ) and (grade > 100 );
+
+
+
+
+
+Write a SQL statement to display all customers, who are either belongs to the city New York or had a grade above 100:
+select * from customer
+where (city = 'new York' ) or (grade > 100 );
+
+
+Write a SQL statement to display all the customers, who are either belongs to the city New York or not had a grade above 100:
+
+select * from customer
+where (city = 'new York' ) or (grade < 100 );
+
+
+
+Write a SQL query to display those customers who are neither belongs to the city New York nor grade value is more than 100:
+select * from customer
+where (city = 'new York' ) and (grade < 100 );
+
+
+
