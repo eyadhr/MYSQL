@@ -44,5 +44,42 @@ Write a SQL query to display those customers who are neither belongs to the city
 select * from customer
 where (city = 'new York' ) and (grade < 100 );
 
+WORKTASK 05:
+
+create database classtask ;
+use classtask ;
+create table Customer (
+customerId int primary key Auto_increment,
+companyName nvarchar (11),
+contactName varchar (45),
+ContactTitle varchar (45),
+address varchar (128) NOT NULL,
+city varchar (255),
+region varchar (20) DEFAULT 'US' ,
+postalCode int ,
+Country nvarchar (50),
+phone int Unique ,
+fax nvarchar (255)
+);
+create table ordre (
+OrderId int primary key ,
+CustomerID int ,
+EmployeeId int ,
+OrderDate date ,
+RequiredDate date ,
+ShipVia varchar(255) DEFAULT 'amazon' ,
+Freight nvarchar(45) ,
+ShippedDate date,
+ShipName nvarchar(255) ,
+Shipaddress nvarchar(255) ,
+Shipcity nvarchar(255) ,
+ShipRegion nvarchar(255) ,
+ShipPostalCode int ,
+ShipCountry nvarchar(255) ,
+foreign key (CustomerId) references Customer (CustomerId)
+);
+
+https://gyazo.com/323455cc404fe141877dad5124323560
+
 
 
