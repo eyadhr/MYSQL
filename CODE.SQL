@@ -1,3 +1,5 @@
+WORKTASK 01:
+
 use mall;
 create table Customer(
 	customer_id int,
@@ -43,6 +45,71 @@ Write a SQL query to display those customers who are neither belongs to the city
 
 select * from customer
 where (city = 'new York' ) and (grade < 100 );
+--------------------------------------------------------------------------------------------------------------------------------------
+
+WORKTASK 04:
+
+use homework ;
+create table author (
+author_id INT (11),
+name varchar(45),
+email varchar(45),
+primary key (author_id)
+);
+CREATE TABLE book (
+book_ID int NOT NULL,
+title varchar(128),
+description varchar(512),
+published DATE,
+author_id int (11),
+PRIMARY KEY (book_ID),
+FOREIGN KEY (Author_id) REFERENCES
+author(author_id)
+);
+create table departments (
+dept_id INT,
+dept_name varchar(45),
+primary key (dept_id)
+);
+CREATE TABLE employees (
+emp_id int NOT NULL,
+emp_name varchar(55),
+hire_date date,
+salary int,
+dept_id int,
+PRIMARY KEY (emp_id),
+FOREIGN KEY (dept_id) REFERENCES
+departments(dept_id)
+);
+create table course (
+courseID nvarchar(20) PRIMARY KEY,
+courseName nvarchar(20),
+unique (courseName)
+);
+create table class (
+StudentID nvarchar(20) PRIMARY KEY,
+FirstName nvarchar(20) not null,
+LastName nvarchar(20) not null,
+courseID nvarchar(20),
+FOREIGN KEY (courseID) REFERENCES
+course(courseID)
+);
+insert into course (courseID,courseName)
+values ('A004','Accounts'),
+('C002','Computing'),
+('P301','History'),
+('S042','Short Course');
+insert into class
+(StudentID,FirstName,LastName,courseID)
+value ('L0002345','Jim','Black','C002'),
+('L0001254','James','Harradine','A004'),
+('L0002349','Amanda','Holland','C002'),
+('L0001198','Simon','MaCloud','S042');
+select * from course;
+select * from class;
+
+LINK PDF: file:///C:/Users/topto/Downloads/MYSQL4%20(3).pdf
+----------------------------------------------------------------------------------------------------------------------------------------
 
 WORKTASK 05:
 
