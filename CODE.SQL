@@ -28,6 +28,7 @@ where (city = 'new York' ) and (grade > 100 );
 
 
 
+
 Write a SQL statement to display all customers, who are either belongs to the city New York or had a grade above 100:
 
 select * from customer
@@ -45,6 +46,8 @@ Write a SQL query to display those customers who are neither belongs to the city
 
 select * from customer
 where (city = 'new York' ) and (grade < 100 );
+
+link GYAZO: https://gyazo.com/f1e143e926da4d8154b452b60e3dddc1
 --------------------------------------------------------------------------------------------------------------------------------------
 
 WORKTASK 04:
@@ -109,6 +112,10 @@ select * from course;
 select * from class;
 
 LINK PDF: file:///C:/Users/topto/Downloads/MYSQL4%20(3).pdf
+Link GYAZO: https://gyazo.com/599573cf98ecda39838b4878d1858869
+Link GYAZO: https://gyazo.com/6bfb1c95259b09cb787b5cd4da1f224f
+Link GYAZO: https://gyazo.com/6d288107c39011272291f0b4f9996bcb
+Link GYAZO: https://gyazo.com/397c45d4d2991dbd500118dfd2bcb921
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 WORKTASK 05:
@@ -146,7 +153,7 @@ ShipCountry nvarchar(255) ,
 foreign key (CustomerId) references Customer (CustomerId)
 );
 
-https://gyazo.com/323455cc404fe141877dad5124323560
+Link GYAZO: https://gyazo.com/323455cc404fe141877dad5124323560
 
 
 
