@@ -155,5 +155,59 @@ foreign key (CustomerId) references Customer (CustomerId)
 
 Link GYAZO: https://gyazo.com/323455cc404fe141877dad5124323560
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WORKTASK 06/04:
+
+create database Info;
+use Info;
+select * from demo;
+
+select avg(age)
+from demo
+where age > 30;
+
+select avg(height)
+from demo
+where id_continent in ('eu');
+
+select min(height) as MinHeight
+from demo;
+
+select max(height) as MaxHeight
+from demo;
+
+select count(freelance) as amount_of_freelancers
+from demo
+where freelance = 1;
+
+select * from demo
+where name like 's%'
+limit 3;
+
+select * from demo
+where id_country in ('ca','uk')
+limit 20;
+
+select pow(2,3);
+select pow(6,2);
+select pow(4,-4);
+
+select sqrt(9);
+select sqrt(144);
+select sqrt(64);
+
+select abs(-648);
+select abs(-974);
+select abs(-34);
+
+select round(3.214);
+select round(-4.35);
+select round(1.3336);
+
+LINK GYAZO: https://gyazo.com/a9bb7cc86730ed76f6dcdcffced02838
+LINK GYAZO: https://gyazo.com/60dbeb91015a0ab40151b86fba56c26c
+LINK GYAZO: https://gyazo.com/ae146897927eaf26bb16aa2772fa9ec9
+
 
 
