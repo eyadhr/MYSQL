@@ -209,5 +209,37 @@ LINK GYAZO: https://gyazo.com/a9bb7cc86730ed76f6dcdcffced02838
 LINK GYAZO: https://gyazo.com/60dbeb91015a0ab40151b86fba56c26c
 LINK GYAZO: https://gyazo.com/ae146897927eaf26bb16aa2772fa9ec9
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+WORKTASK 07:
+
+use demo ;
+SELECT upper(name) AS UppercaseName, lower(firstname) AS LowercaseFirstname FROM demo;
+
+SELECT REPLACE(email,'@','$') AS New_Email ,id, NAME FROM demo;
+
+SELECT DATABASE() , USER(), version() ;
+
+SELECT curtime();
+
+SELECT curdate();
+
+SELECT dayofmonth('2043-01-20');
+
+SELECT dayofyear('1594-05-10');
+
+SELECT dayofweek('1997-07-31');
+
+SELECT substring(website, -4) FROM demo;
+
+SELECT firstname, lastvisit FROM demo where lastvisit between '2012-01-01' and '2012-02-01';
+
+GYAZO: https://gyazo.com/d5eb388277401edca52bced29a69528d
+GYAZO: https://gyazo.com/f2ce6fa7ebf6d744be6451e96808db60
+GYAZO: https://gyazo.com/b495880737a82f38a7a768f6b243404a
+GYAZO: https://gyazo.com/a4083a0b2ed2bc4774abe5fd883bca10
+GYAZO: https://gyazo.com/69d8e91184e960bb02c6502a228ca010
+
+
 
 
