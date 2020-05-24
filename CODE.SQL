@@ -365,5 +365,213 @@ HAVING salesman_id BETWEEN 5003 AND 5008;
 
 GYAZO: https://gyazo.com/48be263532ff275dd9052d272dbce5c0
 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Worktask 09 SQL:
+
+create database classu;
+use classu; 
+
+CREATE TABLE salesman (
+    salesman_id int NOT NULL,
+    name  nvarchar(30) NOT NULL,
+    city  nvarchar(15),
+    commission numeric(5,2)
+);
+
+use classu; 
+insert into  salesman (salesman_id, name, city, commission)
+values
+(5001,	'James Hoog',	'New York',	0.15),
+(5002,	'Nail Knite',	'Paris',	0.13),
+(5005,	'Pit Alex',	'London',	0.11),
+(5006,	'Mc Lyon',	'Paris',	0.14),
+(5007,	'Paul Adam',	'Rome',	0.13),
+(5003,	'Lauson Hen'	,'San Jose',	0.12);
 
 
+CREATE TABLE orders (
+    ord_no numeric(5,0) NOT NULL,
+    purch_amt numeric(8,2) DEFAULT 0,
+    ord_date date,
+    customer_id numeric(5,0) NOT NULL,
+    salesman_id numeric(5,0) NOT NULL
+);
+
+
+INSERT INTO orders (ord_no, purch_amt, ord_date, customer_id, salesman_id) VALUES
+(70009,	270.65,	'2012-09-10',	3001,	5005),
+(70002	,65.26	,'2012-10-05',	3002,	5001),
+(70004	,110.50	,'2012-08-17'	,3009	,5003),
+(70005,	2400.60	,'2012-07-27'	,3007	,5001),
+(70008,	5760.00	,'2012-09-10'	,3002	,5001),
+(70010,	1983.43	,'2012-10-10',	3004,	5006),
+(70003	,2480.40,	'2012-10-10',	3009,	5003),
+(70011	,75.29	,'2012-08-17',	3003,	5007),
+(70013	,3045.60,	'2012-04-25',	3002,	5001),
+(70001	,150.50	,'2012-10-05',	3005,	5002),
+(70007	,948.50	,'2012-09-10'	,3005	,5002),
+(70012	,250.45	,'2012-06-27'	,3008	,5002);
+
+CREATE TABLE customer (
+    customer_id int NOT NULL,
+    cust_name  nvarchar(30) NOT NULL,
+    city  nvarchar(15),
+    grade int DEFAULT 0,
+    salesman_id int NOT NULL
+);
+
+
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) values
+(3002,	'Nick Rimando',	'New York',	100		,5001),
+(3007,	'Brad Davis',	'New York'	,200	,5001),
+(3005,	'Graham Zusi',	'California',200    ,5002),
+(3008,	'Julian Green'	,'London'	,300	,5002),
+(3004,	'Fabian Johnson','Paris'	,300	,5006),
+(3009,	'Geoff Cameron','Berlin'	,100	,5003),
+(3003,	'Jozy Altidor','Moscow'	,200	,5007),
+(3001,	'Brad Guzan',	'London',100,	5005);
+
+ 1.
+  SELECT salesman.name, customer.cust_name, customer.city 
+  FROM salesman,customer 
+  WHERE salesman.city=customer.city;
+2.
+  select o.ord_no, o.purch_amt, c.cust_name, c.city
+  from orders as o, customer as c
+  where o.purch_amt between 500 and 2000 and o.customer_id=c.customer_id
+
+  select c.cust_name as customer, s.name as salesman
+  from customer as c
+  inner join salesman as s
+  on c.salesman_id=s.salesman_id
+
+  select c.cust_name as customer, s.name as salesman, s.commission
+  from customer as c
+  join salesman as s
+  on c.salesman_id=s.salesman_id
+  where s.commission > 0.12
+5.
+  select c.cust_name as customer, s.name as salesman, s.commission
+  from customer as c
+  join salesman as s
+  on c.salesman_id=s.salesman_id
+  where s.commission > 0.12 and c.city!=s.city
+6. 
+  select o.ord_no, o.ord_date, o.purch_amt, s.name, s.commission, c.cust_name
+  from orders as o
+  join customer as c
+  on o.customer_id=c.customer_id
+  join salesman as s
+  on s.salesman_id=o.salesman_id
+7.
+  select c.cust_name, s.name
+  from customer as c
+  join salesman as s
+  on c.salesman_id=s.salesman_id
+  order by c.customer_id asc;
+8. 
+  select c.cust_name, c.grade, s.name
+  from customer as c
+  join salesman as s
+  on c.salesman_id=s.salesman_id
+  where c.grade < 300
+  order by s.salesman_id asc
+9.
+  select c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt
+  from customer as c
+  join orders as o
+  on c.customer_id=o.customer_id
+  order by o.ord_date asc
+10.
+  select c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt, s.name, s.commission
+  from customer as c
+  join orders as o
+  on c.customer_id=o.customer_i
+  join salesman as s
+  on s.salesman_id=c.salesman_id
+11.
+  select s.name, c.cust_name
+  from customer as c
+  join salesman as s
+  on s.salesman_id=c.salesman_i
+  order by s.salesman_id
+12.
+   select s.name, c.cust_name, o.ord_no
+   from customer as c
+   join salesman as s
+   on c.salesman_id=s.salesman_id
+   join orders as o
+13.
+   select s.name, c.cust_name, o.ord_no, o.purch_amt, c.grade
+   from salesman as s
+   join customer as c
+   on s.salesman_id=c.salesman_id
+   join orders as o
+   on c.customer_id=o.customer_id
+   where o.purch_amt > 2000
+   on c.customer_id=o.customer_id
+14.
+   select c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt
+   from customer as c
+   join orders as o
+   on c.customer_id=o.customer_id
+15.
+   select c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt, c.grade
+   from customer as c
+   join orders as o
+   on c.customer_id=o.customer_id
+16.
+   select *
+   from salesman as s
+   cross join customer as c
+17.
+   select *
+   from salesman as s
+   cross join customer as c
+18.
+   select *
+   from salesman as s
+   cross join customer as c
+19.
+   select *
+   from salesman as s
+   cross join customer as c
+   where s.city != c.city
+
+
+GYAZO:
+
+https://gyazo.com/b466fccfd9057cc5e19402c110f4c350
+
+https://gyazo.com/2eab47136d27847daba72868c8ac5bec
+
+https://gyazo.com/da8066d61a57342d6326ae36ce729205
+
+https://gyazo.com/20556c4ae9574ca28e6164bd8d62d708
+
+https://gyazo.com/b5d598b8a754f4b39f1054e74e8f9367
+
+https://gyazo.com/f2fe823bae169b0cda1e247a0476392c
+
+https://gyazo.com/c7e186ce5db595d22803f67b21edf726
+
+https://gyazo.com/f844bcf5bf66b8434809b708f4c03ddf
+
+https://gyazo.com/4cdeac9c83ff9aaec76fa16574acdb81
+
+https://gyazo.com/7be5b5aeb1e5997327af780de181ecde
+
+https://gyazo.com/7af9f75e92469563db8f7a6396f7445c
+
+https://gyazo.com/5fcbd9461f235f8b0bcdf3bf55838873
+
+https://gyazo.com/48c8db6d77e04132f71fcf48231b58f6
+
+https://gyazo.com/1e883d43f41ae1a3cbb8ad3cdfbc2134
+
+https://gyazo.com/68d5961b5c37e093f6651588a0ec611a
+
+https://gyazo.com/c4d934836ee864f439acc8fbab45cc2c
+
+https://gyazo.com/484cc932a51d9440bbe5d7153338fb36
